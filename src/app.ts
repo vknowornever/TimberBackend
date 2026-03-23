@@ -10,9 +10,14 @@ import swaggerSpec from "./config/swagger";
 import jobCardRoutes from "./routes/jobCard.routes";
 
 const app = express();
-app.use(cors({
-    origin: ["http://13.233.156.120"],
-  }));
+app.use(cors( 
+
+ {
+    origin: (origin, callback) => {
+      callback(null, true); // allow all
+    }
+  })
+);
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
