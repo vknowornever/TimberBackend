@@ -10,11 +10,10 @@ import swaggerSpec from "./config/swagger";
 import jobCardRoutes from "./routes/jobCard.routes";
 
 const app = express();
-app.use(express.json());
 app.use(cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: ["http://13.233.156.120"],
   }));
+app.use(express.json());
 app.use(helmet());
 app.use(morgan("dev"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
